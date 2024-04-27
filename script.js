@@ -1,6 +1,11 @@
-const  = document.getElementsByClassName("grid-item")
+let gridItems = document.querySelectorAll("[data-cell]");
 
-document.addEventListener('click', (e) =>  {
+gridItems.forEach(cell => {
+    cell.addEventListener('click', handleClick, {
+        once:true
+    })
+});
 
-    return console.log('clicked me')
-})
+function handleClick(){
+    console.log('clicked');
+}

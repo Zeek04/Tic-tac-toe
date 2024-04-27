@@ -1,5 +1,6 @@
 body{
     background-color: aqua;
+    margin: 0px;
 }
 
 h1{
@@ -15,8 +16,8 @@ h1{
     display: inline-grid;
     background-color: blue;
     grid-template-columns: auto auto auto;
-    height: 600px;
-    width: 600px;
+    height: 50vh;
+    width: 50vh;
     color: #ffff;
     margin-top: 100px auto;
     border-radius: 30px;
