@@ -1,6 +1,14 @@
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+:root{
+    --cell-size:100px;
+    --mark-size: calc(var(--cell-size) * .9);
+}
+
 body{
-    background-color: aqua;
-    margin: 0px;
+    margin: 0;
 }
 
 h1{
@@ -13,22 +21,146 @@ h1{
 }
 
 .grid-container{
-    display: inline-grid;
-    background-color: blue;
-    grid-template-columns: auto auto auto;
-    height: 50vh;
-    width: 50vh;
-    color: #ffff;
-    margin-top: 100px auto;
-    border-radius: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: -200px;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
 }
 .grid-item{
-    font-size: 80px;
-    border: 1px solid #ffff;
-    text-align: center;
-    padding: 20px;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.grid-item.x::before,
+.grid-item.x::after{
+    background-color: black;
+}
+
+.grid-item.o::before,
+.grid-item.o::after{
+    background-color: black;
+}
+
+.grid-container.x .grid-item:not(.x):not(.o):hover::after,
+.grid-container.x .grid-item:not(.x):not(.o):hover::before{
+    background-color: lightgray;
+}
+
+.grid-container.o .grid-item:not(.x):not(.o):hover::after,
+.grid-container.o .grid-item:not(.x):not(.o):hover::before{
+    background-color: lightgray;
+}
+
+
+.grid-item.x,
+.grid-item.o{
+    cursor: not-allowed;
+}
+
+.grid-item:first-child,
+.grid-item:nth-child(2),
+.grid-item:nth-child(3){
+    border-top: none;
+}
+
+.grid-item:last-child,
+.grid-item:nth-child(8),
+.grid-item:nth-child(7){
+    border-bottom: none;
+}
+
+.grid-item:nth-child(3n + 1){
+    border-left: none;
+}
+
+.grid-item:nth-child(3n + 3){
+    border-right: none;
+}
+
+.grid-item.x::before,
+.grid-item.x::after,
+.grid-container.x .grid-item:not(.x):not(.o):hover::after,
+.grid-container.x .grid-item:not(.x):not(.o):hover::before{
+    content: " ";
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    position: absolute;
+    
+}
+
+.grid-item.x::before,
+.grid-container.x .grid-item:not(.x):not(.o):hover::before{
+    transform: rotate(45deg);
+}
+
+.grid-item.x::after,
+.grid-container.x .grid-item:not(.x):not(.o):hover::after{
+    transform: rotate(-45deg);
+}
+
+.grid-item.o::before,
+.grid-item.o::after,
+.grid-container.o .grid-item:not(.x):not(.o):hover::after,
+.grid-container.o .grid-item:not(.x):not(.o):hover::before{
+    content: " ";
+    position: absolute;
+    border-radius: 50%;
+}
+
+.grid-item.o::before,
+.grid-container.o .grid-item:not(.x):not(.o):hover::before{
+    width: var(--mark-size);
+    height: var(--mark-size);
+}
+
+.grid-item.o::after,
+.grid-container.o .grid-item:not(.x):not(.o):hover::after{
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: white;
+}
+
+.winning-message{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, .9);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+}
+
+.winning-message button{
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .25em .5em;
+    cursor: pointer;
+}
+
+.winning-message button:hover{
+    background-color: black;
+    border-color: white;
+    color: white;
+
+}
+
+.winning-message.show{
+    display: flex;
 }
