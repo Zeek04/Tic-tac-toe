@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>TIC-TAC-TOE</h1>
-    <div class="grid-container o">
-        <div class="grid-item x" data-cell></div>
-        <div class="grid-item o" data-cell></div>
+    <div class="grid-container" id="grid">
+        <div class="grid-item" data-cell></div>
+        <div class="grid-item" data-cell></div>
         <div class="grid-item" data-cell></div>
         <div class="grid-item" data-cell></div>
         <div class="grid-item" data-cell></div>
@@ -20,7 +20,7 @@
         <div class="grid-item" data-cell></div>
     </div>
 
-    <div class="winning-message">
+    <div class="winning-message" id="message">
         <div data-winning-message-text></div>
         <button id="restartButton">Restart</button>
     </div>
