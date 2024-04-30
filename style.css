@@ -9,6 +9,7 @@
 
 body{
     margin: 0;
+    background-color: aqua;
 }
 
 h1{
@@ -54,12 +55,12 @@ h1{
 
 .grid-container.x .grid-item:not(.x):not(.o):hover::after,
 .grid-container.x .grid-item:not(.x):not(.o):hover::before{
-    background-color: lightgray;
+    background-color: darkgray;
 }
 
 .grid-container.o .grid-item:not(.x):not(.o):hover::after,
 .grid-container.o .grid-item:not(.x):not(.o):hover::before{
-    background-color: lightgray;
+    background-color: darkgray;
 }
 
 
@@ -128,7 +129,7 @@ h1{
 .grid-container.o .grid-item:not(.x):not(.o):hover::after{
     width: calc(var(--mark-size) * .7);
     height: calc(var(--mark-size) * .7);
-    background-color: white;
+    background-color: aqua;
 }
 
 .winning-message{
